@@ -13,23 +13,7 @@ namespace Sommereksamen_2019.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-
-        public ObservableCollection<TreeData> TreeDatas
-        {
-            get => TreeData.Trees;
-            set => SetProperty(ref TreeData.Trees, value);
-        }
-
-        private string _fileName = "";
-
-        public string FileName
-        {
-            get => _fileName;
-            set => SetProperty(ref _fileName, value);
-        }
-
         #region NavCommands
-
 
         private DelegateCommand _addLocationCommand;
 
@@ -53,18 +37,14 @@ namespace Sommereksamen_2019.ViewModels
 
             foreach (Window w in Application.Current.Windows)
             {
-                if (w is SearchLocationView)
-                {
-                    isWindowOpen = true;
-                    w.Activate();
-                }
+                if (!(w is SearchLocationView)) continue;
+                isWindowOpen = true;
+                w.Activate();
             }
 
-            if (!isWindowOpen)
-            {
-                var newWindow = new SearchLocationView();
-                newWindow.Show();
-            }
+            if (isWindowOpen) return;
+            var newWindow = new SearchLocationView();
+            newWindow.Show();
 
         }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTreeData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TreeData>
+    <Id>2</Id>
+    <Name>rewq</Name>
+    <Street>ewr</Street>
+    <StreetNumber>Hejsa</StreetNumber>
+    <PostalCode>qrwe</PostalCode>
+    <City>rewq</City>
+    <MeasureTrees>
+      <MeasureTrees>
+        <Amount>3</Amount>
+        <TreeSort>Maple</TreeSort>
+      </MeasureTrees>
+    </MeasureTrees>
+  </TreeData>
+  <TreeData>
+    <Id>2</Id>
+    <Name>rewq</Name>
+    <Street>ewr</Street>
+    <StreetNumber>Hejsa</StreetNumber>
+    <PostalCode>qrwe</PostalCode>
+    <City>rewq</City>
+    <MeasureTrees>
+      <MeasureTrees>
+        <Amount>3</Amount>
+        <TreeSort>Maple</TreeSort>
+      </MeasureTrees>
+    </MeasureTrees>
+  </TreeData>
+</ArrayOfTreeData>

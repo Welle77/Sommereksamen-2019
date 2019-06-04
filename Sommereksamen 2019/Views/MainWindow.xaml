@@ -26,10 +26,14 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Frame Content="{StaticResource Logo}" 
-               Grid.Column="3"
-               Grid.Row="0"></Frame>
-        <Image Source="../images/trees.png" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
+        <!-- Jeg har ingen anelse om hvorfor det her forsvinder når jeg åbner et nyt vindue. 
+        https://stackoverflow.com/questions/13209526/main-window-disappears-behind-other-applications-windows-after-a-sub-window-use
+        Hjalp ikke. Så hellere lade det være væk.
+        <Frame Content="{StaticResource Logo}"
+        Grid.Column="3"             
+        Grid.Row="0"></Frame>
+        -->
+<Image Source="../images/trees.png" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
                ></Image>
 
         <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"

@@ -12,20 +12,22 @@ namespace Sommereksamen_2019.ViewModels
 {
     public class AddLocationViewModel : ViewModelBase
     {
+        private ObservableCollection<TreeData> _treeDatas;
 
         public AddLocationViewModel()
         {
-            TreeData = new TreeData();
+            TreeDatasData = new TreeData();
+            Repository = new Repository();
+            _treeDatas = new ObservableCollection<TreeData>();
             MeasureTrees = new ObservableCollection<MeasureTrees>();
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 MeasureTrees.Add(new MeasureTrees());
             }
-            Repository = new Repository();
         }
 
         private TreeData _treeData;
-        public TreeData TreeData
+        public TreeData TreeDatasData
         {
             get => _treeData;
             set => SetProperty(ref _treeData, value);
@@ -38,7 +40,6 @@ namespace Sommereksamen_2019.ViewModels
             get => _measureTrees;
             set => SetProperty(ref _measureTrees, value);
         }
-
 
         private DelegateCommand _saveAsCommand;
 
@@ -53,10 +54,10 @@ namespace Sommereksamen_2019.ViewModels
                 if (measureTreese.Amount != 0)
                     tempList.Add(measureTreese);
             }
-            TreeData.MeasureTrees = tempList;
-            TreeData.Id = TreeData.Trees.Count;
-            TreeData.Trees.Add(TreeData);
-            Repository.SaveData(TreeData.Trees);
+            TreeDatasData.MeasureTrees = tempList;
+            TreeDatasData.Id = _treeDatas.Count;
+            _treeDatas.Add(TreeDatasData);
+            Repository.SaveData(_treeDatas);
         }
 
         private DelegateCommand _saveCommand;
@@ -64,23 +65,26 @@ namespace Sommereksamen_2019.ViewModels
         public ICommand SaveCommand => _saveCommand ?? (
                                                _saveCommand = new DelegateCommand(OnSaveFileCommand));
 
-        private void OnSaveFileCommand()
+        private async void OnSaveFileCommand()
         {
             if (Repository.CurrentFileName == "")
             {
                 MessageBox.Show("No file was selected");
                 return;
             }
+
+            _treeDatas = await Repository.UpdateData();
+
             var tempList = new ObservableCollection<MeasureTrees>();
-            foreach (var measureTreese in MeasureTrees)
+            foreach (var measureTrees in MeasureTrees)
             {
-                if (measureTreese.Amount != 0)
-                    tempList.Add(measureTreese);
+                if (measureTrees.Amount != 0)
+                    tempList.Add(measureTrees);
             }
-            TreeData.MeasureTrees = tempList;
-            TreeData.Id = TreeData.Trees.Count;
-            TreeData.Trees.Add(TreeData);
-            Repository.SaveData(TreeData.Trees, Repository.CurrentFileName);
+            TreeDatasData.MeasureTrees = tempList;
+            TreeDatasData.Id = _treeDatas.Count;
+            _treeDatas.Add(TreeDatasData);
+            Repository.SaveData(_treeDatas, Repository.CurrentFileName);
         }
 
         private DelegateCommand _openFileCommand;
@@ -90,8 +94,7 @@ namespace Sommereksamen_2019.ViewModels
 
         private async void OnOpenFileCommand()
         {
-            var tempTreeData = await Repository.GetData();
-
+             _treeDatas = await Repository.GetData();
         }
     }
 }

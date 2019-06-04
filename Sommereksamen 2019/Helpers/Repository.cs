@@ -57,7 +57,7 @@ namespace Sommereksamen_2019.Helpers
             if (saveFileDialog.ShowDialog() == false) return;
             CurrentFileName = saveFileDialog.FileName;
             TextWriter writer = new StreamWriter(CurrentFileName);
-            _serializer.Serialize(writer, TreeData.Trees);
+            _serializer.Serialize(writer, data);
             writer.Close();
             MessageBox.Show("File Saved", "Success",
                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -67,7 +67,7 @@ namespace Sommereksamen_2019.Helpers
         {
             CurrentFileName = fileName;
             TextWriter writer = new StreamWriter(CurrentFileName);
-            _serializer.Serialize(writer, TreeData.Trees);
+            _serializer.Serialize(writer, data);
             writer.Close();
             MessageBox.Show("File Saved", "Success",
                 MessageBoxButton.OK, MessageBoxImage.Information);

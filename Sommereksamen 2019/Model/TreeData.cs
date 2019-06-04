@@ -54,7 +54,5 @@ namespace Sommereksamen_2019.Model
             get => _measureTrees;
             set => SetProperty(ref _measureTrees, value);
         }
-
-        public static ObservableCollection<TreeData> Trees = new ObservableCollection<TreeData>();
     }
 }

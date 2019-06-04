@@ -52,7 +52,6 @@ namespace Sommereksamen_2019.ViewModels
             set => SetProperty(ref _location, value);
         }
 
-
         private DelegateCommand _openFileCommand;
 
         public ICommand OpenFileCommand => _openFileCommand ?? (
